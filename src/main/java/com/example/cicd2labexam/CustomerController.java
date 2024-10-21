@@ -19,26 +19,26 @@ public class CustomerController {
     }
 
     @GetMapping
-    public List<Customers> getAllCustomers() {
+    public List<customer> getAllCustomers() {
         return customerService.getAllCustomers();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer>getCustomerById(@PathVariable String id){
-        Optional<Customer>customer = customerService.getCustomerById(id);
+    public ResponseEntity<customer>getCustomerById(@PathVariable String id){
+        Optional<customer>customer = customerService.getCustomerById(id);
         return customer.map(ResponseEntity::ok).orElseGet())->ResponseEntity.notFound().build());
     }
     @PostMapping
-    public ResponseEntity<Customer> createCustomer(@Validated @RequestBody Customer customer) {
+    public ResponseEntity<customer> createCustomer(@Validated @RequestBody customer customer) {
         return Response.Entity.ok(customerService.createCustomer(customer));
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Customer>updateCustomer(@PathVariable String id, @Validated @RequestBody Customer customer) {
-        Optional<Customer> existingCustomer = customerService.getCustomerById(id);
+    public ResponseEntity<customer>updateCustomer(@PathVariable String id, @Validated @RequestBody customer customer) {
+        Optional<com.example.cicd2labexam.customer> existingCustomer = customerService.getCustomerById(id);
 
         if (existingCustomer.isPresent()) {
-            Customer.setId(id);
-            Customer updated = customerService.updateCustomer(customer);
+            com.example.cicd2labexam.customer.setId(id);
+            com.example.cicd2labexam.customer updated = customerService.updateCustomer(customer);
             return ResponseEntity.ok(updated);
         }
         return ResponseEntity.notFound().build();

@@ -7,16 +7,16 @@ public class CustomerService {
     private final CustomerRepositry customerRepositry;
 
     @Autowired
-    public CustomerService(CusomerRepository customerRepository) {
-        this.customerRepositry = customerRepository;
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
     }
     public List<customer>getAllCustomers(){
-        return.customerRepository.findAll();
+        return.CustomerRepository.findAll();
     }
-    public Optional<Customer>getCustomerById(String id){
-        return customerRepository.save(customer);
+    public Optional<customer>getCustomerById(String id){
+        return CustomerRepository.save(customer);
     }
-    public Customer CreateCustomer(Customer customer){
+    public customer CreateCustomer(customer customer){
         return customerRepositry.save(customer);
 
     }
